@@ -1,0 +1,16 @@
+{
+  "agents": {
+    "overrides": {
+      "browser_agent": {
+        "enabled": true
+      }
+    },
+    "browser": {
+      "sessionMode": "isolated",
+      "headless": false,
+      "allowedDomains": ["localhost"],
+      "blockFileUploads": true,
+      "confirmSensitiveActions": false
+    }
+  }
+}
