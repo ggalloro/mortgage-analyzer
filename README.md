@@ -42,4 +42,4 @@ This repository ships a feature-delivery pipeline built on Gemini CLI subagents 
 - **`.gemini/settings.json`** — enables the built-in `browser_agent` (locked to `localhost`) for live-app verification.
 - **`FEATURE-REQUEST.md`** — sample feature request the pipeline runs against (amortization schedule + scenario comparison).
 
-To reproduce the pipeline run, install [Gemini CLI](https://geminicli.com/), open this repo, and follow the prompts described in the companion blog post.
+To reproduce the pipeline run, install [Gemini CLI](https://geminicli.com/), open this repo, and follow the prompts described in the [companion blog post](https://medium.com/google-cloud/feature-development-with-gemini-cli-subagents-a637947ee6bc).
