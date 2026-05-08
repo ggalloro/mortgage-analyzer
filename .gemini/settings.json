@@ -8,9 +8,22 @@
     "browser": {
       "sessionMode": "isolated",
       "headless": false,
-      "allowedDomains": ["localhost"],
+      "allowedDomains": [
+        "localhost"
+      ],
       "blockFileUploads": true,
       "confirmSensitiveActions": false
     }
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "name": "session_context",
+        "type": "command",
+        "command": "$GEMINI_PROJECT_DIR/.gemini/hooks/session_context.sh",
+        "timeout": 3000,
+        "description": "Injects project state (branch, dirty files) at session start"
+      }
+    ]
   }
 }
