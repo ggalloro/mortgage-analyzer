@@ -8,9 +8,7 @@
     "browser": {
       "sessionMode": "isolated",
       "headless": false,
-      "allowedDomains": [
-        "localhost"
-      ],
+      "allowedDomains": ["localhost"],
       "blockFileUploads": true,
       "confirmSensitiveActions": false
     }
@@ -18,13 +16,19 @@
   "hooks": {
     "BeforeTool": [
       {
-        "matcher": "write_file|replace|run_shell_command",
+        "matcher": "write_file|replace",
         "hooks": [
           {
-            "name": "secret-scanner",
+            "name": "protected-paths",
             "type": "command",
-            "command": "$GEMINI_PROJECT_DIR/.gemini/hooks/block-secrets.sh",
-            "description": "Prevent committing secrets"
+            "command": "$GEMINI_PROJECT_DIR/.gemini/hooks/block-protected-paths.sh",
+            "description": "Block writes to security-critical paths (.gemini/, .env, .git/, etc.)"
+          },
+          {
+            "name": "mortgage-rules",
+            "type": "command",
+            "command": "$GEMINI_PROJECT_DIR/.gemini/hooks/enforce-mortgage-rules.sh",
+            "description": "Enforce eu-mortgage-rules thresholds on lib/calculations.ts"
           }
         ]
       }
