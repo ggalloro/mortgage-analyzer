@@ -3,10 +3,10 @@
 input=$(cat)
 
 # Extract content being written using jq
-content=$(echo "$input" | jq -r '.tool_input.content // .tool_input.new_string // ""')
+content=$(echo "$input" | jq -r '.tool_input.content // .tool_input.new_string // .tool_input.command // ""')
 
 # Check for common secret patterns
-if echo "$content" | grep -qE 'api[_-]?key|password|secret|AKIA[0-9A-Z]{16}'; then
+if echo "$content" | grep -qiE 'api[_-]?key|password|secret|AKIA[0-9A-Z]{16}'; then
   # Return structured denial to the agent
   cat <<EOF
 {
