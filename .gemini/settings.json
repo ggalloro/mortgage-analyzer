@@ -16,13 +16,17 @@
     }
   },
   "hooks": {
-    "SessionStart": [
+    "BeforeTool": [
       {
-        "name": "session_context",
-        "type": "command",
-        "command": "$GEMINI_PROJECT_DIR/.gemini/hooks/session_context.sh",
-        "timeout": 3000,
-        "description": "Injects project state (branch, dirty files) at session start"
+        "matcher": "write_file|replace",
+        "hooks": [
+          {
+            "name": "secret-scanner",
+            "type": "command",
+            "command": "$GEMINI_PROJECT_DIR/.gemini/hooks/block-secrets.sh",
+            "description": "Prevent committing secrets"
+          }
+        ]
       }
     ]
   }
