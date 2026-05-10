@@ -16,19 +16,13 @@
   "hooks": {
     "BeforeTool": [
       {
-        "matcher": "write_file|replace",
+        "matcher": "run_shell_command",
         "hooks": [
           {
-            "name": "protected-paths",
+            "name": "destructive-ops",
             "type": "command",
-            "command": "$GEMINI_PROJECT_DIR/.gemini/hooks/block-protected-paths.sh",
-            "description": "Block writes to security-critical paths (.gemini/, .env, .git/, etc.)"
-          },
-          {
-            "name": "mortgage-rules",
-            "type": "command",
-            "command": "$GEMINI_PROJECT_DIR/.gemini/hooks/enforce-mortgage-rules.sh",
-            "description": "Enforce eu-mortgage-rules thresholds on lib/calculations.ts"
+            "command": "$GEMINI_PROJECT_DIR/.gemini/hooks/block-destructive-ops.sh",
+            "description": "Block destructive shell ops (force-push, hard reset, rm -rf, chmod 777, pipe-to-shell)"
           }
         ]
       }
